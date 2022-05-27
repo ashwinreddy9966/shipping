@@ -9,6 +9,7 @@ module "shipping" {
   APP_PORT              = var.APP_PORT
   APP_VERSION           = var.APP_VERSION
   LB_TYPE               = "internal"
+  APP_TYPE              = var.APP_TYPE
 }
 
 
