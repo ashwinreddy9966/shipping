@@ -1,4 +1,4 @@
-FROM          maven:eclipse-temurin
+FROM          maven --as
 RUN           useradd -m roboshop
 USER          roboshop
 WORKDIR       /home/roboshop
