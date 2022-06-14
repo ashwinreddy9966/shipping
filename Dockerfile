@@ -1,12 +1,10 @@
-FROM          maven:eclipse-temurin AS builder
-RUN           adduser --disabled-password  --home /app --gecos "" roboshop
+FROM          maven
+RUN           useradd -m roboshop
 USER          roboshop
-WORKDIR       /app
+WORKDIR       /home/roboshop
+COPY          pom.xml .
 COPY          src/ src/
-COPY          pom.xml pom.xml
-RUN           mvn clean package
+RUN           ls -ltr
+RUN           mvn package
 RUN           mv target/shipping-1.0.jar shipping.jar
-
-FROM          openjdk:8u322-jre-buster
-COPY          --from=builder /app/shipping.jar .
-ENTRYPOINT    ["java", "-jar", "shipping.jar"]
+ENTRYPOINT    ["java", "-Xms2900m", "-jar", "shipping.jar"]
