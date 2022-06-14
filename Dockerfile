@@ -9,15 +9,15 @@
 # RUN           mv target/shipping-1.0.jar shipping.jar
 # ENTRYPOINT    ["java", "-Xms2900m", "-jar", "shipping.jar"]
 
-FROM          debian:10 AS build
+FROM          debian AS build
 RUN           apt-get update && apt-get -y install maven
 RUN           useradd -m roboshop
 WORKDIR       /home/roboshop
 
-COPY pom.xml .
-RUN mvn dependency:resolve
-COPY src/ src/
-RUN mvn package && ls -ltr
+COPY          pom.xml .
+RUN           mvn dependency:resolve
+COPY          src/ src/
+RUN           mvn package && ls -ltr
 
 #
 # Run
