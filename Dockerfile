@@ -1,4 +1,4 @@
-FROM          maven --as
+FROM          maven  AS builder
 RUN           useradd -m roboshop
 USER          roboshop
 WORKDIR       /home/roboshop
