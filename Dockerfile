@@ -7,7 +7,7 @@ COPY          src/ src/
 RUN           ls -ltr
 RUN           env && mvn package
 RUN           mv target/shipping-1.0.jar shipping.jar
-ENTRYPOINT    ["java", "Xms", "-jar", "shipping.jar"]
+ENTRYPOINT    ["java", "Xms2900m", "-jar", "shipping.jar"]
 
 # FROM          debian:latest AS builder
 # RUN           apt-get update && apt-get -y install maven
